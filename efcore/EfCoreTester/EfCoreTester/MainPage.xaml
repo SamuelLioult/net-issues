@@ -52,7 +52,8 @@
                   SelectionChanged="lvBlogs_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Blog">
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical"
+                                Margin="0,12,0,12">
                         <TextBlock>
                             <Run Text="Blog id:"/>
                             <Run Text="{x:Bind BlogId}"/>
@@ -103,7 +104,8 @@
                   Header="Posts:">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Post">
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical"
+                                Margin="0,12,0,12">
                         <TextBlock>
                             <Run Text="Blog id:"/>
                             <Run Text="{x:Bind BlogId}"/>

@@ -1,4 +1,5 @@
 ﻿using EfCoreTester.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace EfCoreTester.Data
         {
             using (var db = new EfCoreTesterContext())
             {
-                return db.Blogs.ToList();
+                return db.Blogs.Include(x => x.Posts).ToList();
             }
         }
 
