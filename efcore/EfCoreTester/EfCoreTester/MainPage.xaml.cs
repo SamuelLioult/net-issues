@@ -69,8 +69,11 @@ namespace EfCoreTester
         {
             if (!string.IsNullOrEmpty(txtPostMessage.Text))
             {
-                var newPost = new Post() { Message = txtPostMessage.Text, Blog = lvBlogs.SelectedItem as Blog };
-                DataAccessService.Instance.AddPost(newPost);
+                var newPost = new Post() { Message = txtPostMessage.Text };
+                var blog = lvBlogs.SelectedItem as Blog;
+
+                blog.Posts.Add(newPost);
+                DataAccessService.Instance.UpdateBlog(blog);
                 txtPostMessage.Text = string.Empty;
 
                 lvPosts.Items.Add(newPost);

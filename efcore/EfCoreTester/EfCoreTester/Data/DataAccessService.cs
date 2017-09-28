@@ -44,6 +44,15 @@ namespace EfCoreTester.Data
             }
         }
 
+        public void UpdateBlog(Blog blog)
+        {
+            using (var db = new EfCoreTesterContext())
+            {
+                db.Update(blog);
+                db.SaveChanges();
+            }
+        }
+
         public void AddPost(Post post)
         {
             using (var db = new EfCoreTesterContext())
