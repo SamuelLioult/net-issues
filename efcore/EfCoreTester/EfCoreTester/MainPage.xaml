@@ -120,6 +120,16 @@
                             <Run Text="Post message:"/>
                             <Run Text="{x:Bind Message}"/>
                         </TextBlock>
+
+                        <TextBlock>
+                            <Run Text="Owner id:"/>
+                            <Run Text="{x:Bind OwnerId}"/>
+                        </TextBlock>
+
+                        <TextBlock>
+                            <Run Text="Owner name:"/>
+                            <Run Text="{x:Bind Owner.Name}"/>
+                        </TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

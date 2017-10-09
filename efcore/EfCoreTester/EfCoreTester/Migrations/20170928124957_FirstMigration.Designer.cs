@@ -8,7 +8,7 @@ using EfCoreTester.Data;
 namespace EfCoreTester.Migrations
 {
     [DbContext(typeof(EfCoreTesterContext))]
-    [Migration("20170927061952_FirstMigration")]
+    [Migration("20170928124957_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,6 +28,18 @@ namespace EfCoreTester.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("EfCoreTester.Models.Owner", b =>
+                {
+                    b.Property<int>("OwnerId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("OwnerId");
+
+                    b.ToTable("Owners");
+                });
+
             modelBuilder.Entity("EfCoreTester.Models.Post", b =>
                 {
                     b.Property<int>("PostId")
@@ -37,9 +49,13 @@ namespace EfCoreTester.Migrations
 
                     b.Property<string>("Message");
 
+                    b.Property<int>("OwnerId");
+
                     b.HasKey("PostId");
 
                     b.HasIndex("BlogId");
+
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("Posts");
                 });
@@ -49,6 +65,11 @@ namespace EfCoreTester.Migrations
                     b.HasOne("EfCoreTester.Models.Blog", "Blog")
                         .WithMany("Posts")
                         .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("EfCoreTester.Models.Owner", "Owner")
+                        .WithMany("Posts")
+                        .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

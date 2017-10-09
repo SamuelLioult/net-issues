@@ -12,6 +12,7 @@ namespace EfCoreTester.Data
     {
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Owner> Owners { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,6 +27,11 @@ namespace EfCoreTester.Data
                 .HasOne(x => x.Blog)
                 .WithMany(x => x.Posts)
                 .HasForeignKey(x => x.BlogId);
+
+            modelBuilder.Entity<Post>()
+                .HasOne(x => x.Owner)
+                .WithMany(x => x.Posts)
+                .HasForeignKey(x => x.OwnerId);
         }
     }
 }

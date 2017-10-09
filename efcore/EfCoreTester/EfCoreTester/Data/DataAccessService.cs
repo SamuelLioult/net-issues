@@ -40,7 +40,7 @@ namespace EfCoreTester.Data
         {
             using (var db = new EfCoreTesterContext())
             {
-                return db.Blogs.Include(x => x.Posts).ToList();
+                return db.Blogs.Include(x => x.Posts).ThenInclude(x => x.Owner).ToList();
             }
         }
 
@@ -67,6 +67,23 @@ namespace EfCoreTester.Data
             using (var db = new EfCoreTesterContext())
             {
                 return db.Posts.ToList();
+            }
+        }
+
+        public void AddOwner(Owner owner)
+        {
+            using(var db = new EfCoreTesterContext())
+            {
+                db.Add(owner);
+                db.SaveChanges();
+            }
+        }
+
+        public List<Owner> GetOwners()
+        {
+            using (var db = new EfCoreTesterContext())
+            {
+                return db.Owners.ToList();
             }
         }
 

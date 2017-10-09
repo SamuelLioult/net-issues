@@ -1,0 +1,146 @@
+﻿<Page
+    x:Class="SQLiteNullableDateTimeIssue.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SQLiteNullableDateTimeIssue"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel BorderBrush="Black"
+                    BorderThickness="1"
+                    Orientation="Vertical"
+                    Margin="12"
+                    Padding="12">
+
+            <TextBlock FontSize="24"
+                       FontWeight="Light"
+                       Text="Step 1: Add new dog"
+                       Margin="0,0,0,12"/>
+
+            <TextBox Header="Enter your dog name:"
+                     Width="200"
+                     MaxLength="60"
+                     x:Name="txtDogName"/>
+
+        </StackPanel>
+
+        <TextBlock x:Name="tbDogCreationResult"
+                   Margin="12,6,12,12"
+                   Grid.Row="1"
+                   Visibility="Collapsed">
+            <Run Text="Dog creation result:"/>
+            <Run x:Name="runDogCreationResult"/>
+        </TextBlock>
+
+        <StackPanel BorderBrush="Black"
+                    BorderThickness="1"
+                    Orientation="Vertical"
+                    Visibility="Collapsed"
+                    x:Name="spGetYourDog"
+                    Grid.Row="2"
+                    Margin="12"
+                    Padding="12">
+
+            <TextBlock FontSize="24"
+                       FontWeight="Light"
+                       Text="Step 2: Get your saved dog"
+                       Margin="0,0,0,12"/>
+
+            <Button Content="Click here!"
+                    x:Name="btnGetYourDog"
+                    Click="btnGetYourDog_Click"/>
+
+        </StackPanel>
+
+        <TextBlock x:Name="tbGetYourDogResult"
+                   Margin="12,6,12,12"
+                   Grid.Row="3"
+                   Visibility="Collapsed">
+            <Run Text="Your dog:"/>
+            <Run x:Name="runGetYourDogResult"/>
+        </TextBlock>
+
+        <StackPanel BorderBrush="Black"
+                    BorderThickness="1"
+                    Orientation="Vertical"
+                    Grid.Row="4"
+                    x:Name="spSetBirthDate"
+                    Visibility="Collapsed"
+                    Margin="12"
+                    Padding="12">
+
+            <TextBlock FontSize="24"
+                       FontWeight="Light"
+                       Text="Step 3: Set your dog birth date"
+                       Margin="0,0,0,12"/>
+
+            <DatePicker x:Name="dpDogBirthDate"/>
+
+        </StackPanel>
+
+        <TextBlock x:Name="tbDogUpdateResult"
+                   Margin="12,6,12,12"
+                   Grid.Row="5"
+                   Visibility="Collapsed">
+            <Run Text="Dog update result:"/>
+            <Run x:Name="runDogUpdateResult"/>
+        </TextBlock>
+
+        <StackPanel BorderBrush="Black"
+                    BorderThickness="1"
+                    Orientation="Vertical"
+                    Visibility="Collapsed"
+                    x:Name="spGetYourDog2"
+                    Grid.Row="6"
+                    Margin="12"
+                    Padding="12">
+
+            <TextBlock FontSize="24"
+                       FontWeight="Light"
+                       Text="Step 4: Get your updated dog"
+                       Margin="0,0,0,12"/>
+
+            <Button Content="Click here!"
+                    x:Name="btnGetYourUpdatedDog"
+                    Click="btnGetYourUpdatedDog_Click"/>
+
+        </StackPanel>
+
+        <TextBlock x:Name="tbGetYourDog2Result"
+                   Margin="12,6,12,12"
+                   Grid.Row="7"
+                   Visibility="Collapsed">
+            <Run Text="Your dog:"/>
+            <Run x:Name="runGetYourDog2Result"/>
+        </TextBlock>
+
+        <Button x:Name="btnNextStep"
+                Margin="12"
+                Grid.Row="8"
+                Content="Next step!"
+                Click="btnNextStep_Click"/>
+
+        <Button x:Name="btnTryAgain"
+                Margin="12"
+                Visibility="Collapsed"
+                Grid.Row="8"
+                Content="Try again!"
+                Click="btnTryAgain_Click"/>
+
+    </Grid>
+</Page>

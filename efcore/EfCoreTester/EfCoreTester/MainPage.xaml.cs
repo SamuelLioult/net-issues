@@ -27,6 +27,7 @@ namespace EfCoreTester
     public sealed partial class MainPage : Page
     {
         private readonly ObservableCollection<Blog> _blogs = new ObservableCollection<Blog>();
+        private Owner _owner;
 
         public MainPage()
         {
@@ -35,7 +36,24 @@ namespace EfCoreTester
             gridAddPost.Visibility = Visibility.Collapsed;
             lvPosts.Visibility = Visibility.Collapsed;
 
+            LoadOwner();
             LoadBlogs();
+        }
+
+        private void LoadOwner()
+        {
+            var owners = DataAccessService.Instance.GetOwners();
+            if (!owners.Any())
+            {
+                _owner = new Owner();
+                _owner.Name = "Samuel";
+
+                DataAccessService.Instance.AddOwner(_owner);
+            }
+            else
+            {
+                _owner = owners.First();
+            }
         }
 
         private void LoadBlogs()
@@ -69,9 +87,9 @@ namespace EfCoreTester
         {
             if (!string.IsNullOrEmpty(txtPostMessage.Text))
             {
-                var newPost = new Post() { Message = txtPostMessage.Text };
+                var newPost = new Post() { Message = txtPostMessage.Text, OwnerId = _owner.OwnerId};
                 var blog = lvBlogs.SelectedItem as Blog;
-
+                
                 blog.Posts.Add(newPost);
                 DataAccessService.Instance.UpdateBlog(blog);
                 txtPostMessage.Text = string.Empty;
