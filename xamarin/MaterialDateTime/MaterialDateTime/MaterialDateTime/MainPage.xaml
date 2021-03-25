@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MaterialDateTime.Controls"
+             x:Class="MaterialDateTime.MainPage"
+             Visual="Material">
+
+    <StackLayout>
+        <Label Margin="24,24,24,12"
+               Text="The Xamarin Forms DatePicker which does not match the Android color accent"/>
+        <DatePicker />
+
+        <Label Margin="24,24,24,12"
+               Text="My ExtendedDatePicker customized by the Renderer (see in the Android project and in styles.xml)"/>
+        <controls:ExtendedDatePicker />
+
+        <Frame Margin="24"
+               BackgroundColor="LightGreen"
+               CornerRadius="20">
+            <StackLayout>
+                <Label Text="The same ExtendedDatePicker in a Frame..."
+                       Margin="12"/>
+                <controls:ExtendedDatePicker />
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+
+</ContentPage>
